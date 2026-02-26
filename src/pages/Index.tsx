@@ -51,8 +51,8 @@ const Index = () => {
                   transition={{ delay: 0.5 }}
                   className="text-center"
                 >
-                  <span className="inline-block glass rounded-full px-4 py-2 text-xs text-muted-foreground">
-                    🏆 עשית {count} צ'ק-אינים עד כה!
+                  <span className="inline-block glass rounded-full px-4 py-2 text-sm font-semibold text-foreground">
+                    🏆 {count}
                   </span>
                 </motion.div>
               )}
