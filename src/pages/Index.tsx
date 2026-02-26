@@ -52,7 +52,16 @@ const Index = () => {
                   className="text-center"
                 >
                   <span className="inline-block glass rounded-full px-4 py-2 text-sm font-semibold text-foreground">
-                    🏆 {count}
+                    🏆{" "}
+                    <motion.span
+                      key={count}
+                      initial={{ y: -20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="inline-block"
+                    >
+                      {count}
+                    </motion.span>
                   </span>
                 </motion.div>
               )}
