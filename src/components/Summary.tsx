@@ -31,7 +31,7 @@ export const Summary = ({ checkIn, checkInCount, onNewCheckIn }: Props) => {
           🌟
         </motion.div>
         <h2 className="text-2xl font-bold text-foreground">כל הכבוד!</h2>
-        <p className="text-muted-foreground text-sm">עצרת, חשבת, ובחרת. זה בדיוק מה שערנות זה.</p>
+        <p className="text-muted-foreground text-sm">עצרת, חשבת, ובחרת.</p>
       </div>
 
       <div className="glass-strong rounded-xl p-5 space-y-4">
