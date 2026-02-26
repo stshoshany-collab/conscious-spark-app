@@ -14,8 +14,8 @@ const Index = () => {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Ambient background effects */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-20%] right-[-10%] w-96 h-96 rounded-full bg-primary/5 blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-80 h-80 rounded-full bg-accent/5 blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-[-20%] right-[-10%] w-96 h-96 rounded-full bg-primary/10 blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-80 h-80 rounded-full bg-accent/10 blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
       </div>
 
       <div className="relative z-10 flex-1 flex flex-col max-w-md mx-auto w-full px-4 py-6">
