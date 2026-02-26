@@ -40,7 +40,7 @@ const Index = () => {
                 </motion.div>
                 <h1 className="text-3xl font-bold text-gradient">מה קורה עכשיו?</h1>
                 <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
-                  עצור. הסתכל סביבך. תבין מה קורה. בחר מה לעשות.
+                  עצור. הבט סביבך. שאל את עצמך / אחרים – מה קורה? בחר בהתנהגות המתאימה.
                 </p>
               </div>
 
