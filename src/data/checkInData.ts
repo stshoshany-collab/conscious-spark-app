@@ -112,7 +112,7 @@ export const actionsBySituation: Record<SituationType, ActionOption[]> = {
   ],
   emotional: [
     { id: "sit-near", label: "לשבת ליד בשקט", emoji: "🪑", hint: "לפעמים נוכחות שקטה היא הדבר הכי חזק" },
-    { id: "say-here", label: "להגיד 'אני פה'", emoji: "🫂", hint: "שני מילים פשוטות שאומרות המון" },
+    { id: "say-here", label: "להגיד 'אני פה'", emoji: "🫂", hint: "שתי מילים פשוטות שאומרות המון" },
     { id: "bring-water", label: "להביא כוס מים", emoji: "💧", hint: "פעולה קטנה שמראה אכפתיות" },
     { id: "tell-adult", label: "לספר למבוגר", emoji: "🧑‍🏫", hint: "אם אתה לא בטוח מה לעשות – זה תמיד בסדר" },
   ],
