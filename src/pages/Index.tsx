@@ -2,13 +2,18 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckInFlow } from "@/components/CheckInFlow";
 import { History } from "@/components/History";
+import { LearningSummary } from "@/components/LearningSummary";
+import { PersonalAvatar } from "@/components/PersonalAvatar";
+import { Journal } from "@/components/Journal";
 import { getCheckInCount } from "@/lib/history";
+import { getAvatarStats } from "@/lib/avatar";
 
-type View = "home" | "checkin" | "history";
+type View = "home" | "checkin" | "history" | "learning" | "avatar" | "journal";
 
 const Index = () => {
   const [view, setView] = useState<View>("home");
   const count = getCheckInCount();
+  const avatarStats = view === "home" ? getAvatarStats() : null;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -27,8 +32,23 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="flex-1 flex flex-col justify-center space-y-8"
+              className="flex-1 flex flex-col justify-center space-y-6"
             >
+              {/* Avatar mini display */}
+              {avatarStats && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.1 }}
+                  onClick={() => setView("avatar")}
+                  className="self-center glass rounded-full px-4 py-2 flex items-center gap-2 hover:scale-105 transition-transform"
+                >
+                  <span className="text-xl">{avatarStats.currentLevel.emoji}</span>
+                  <span className="text-xs font-semibold text-foreground">{avatarStats.currentLevel.title}</span>
+                  <span className="text-xs text-muted-foreground">רמה {avatarStats.currentLevel.level}</span>
+                </motion.button>
+              )}
+
               <div className="text-center space-y-4">
                 <motion.div
                   initial={{ scale: 0 }}
@@ -76,6 +96,28 @@ const Index = () => {
                   🚀 בוא נתחיל צ'ק-אין
                 </motion.button>
 
+                <div className="grid grid-cols-2 gap-3">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => setView("journal")}
+                    className="glass rounded-xl p-3 text-center space-y-1"
+                  >
+                    <span className="text-xl block">📓</span>
+                    <p className="text-xs font-medium text-foreground">היומן שלי</p>
+                  </motion.button>
+
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => setView("learning")}
+                    className="glass rounded-xl p-3 text-center space-y-1"
+                  >
+                    <span className="text-xl block">📚</span>
+                    <p className="text-xs font-medium text-foreground">סיכום למידה</p>
+                  </motion.button>
+                </div>
+
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
@@ -107,14 +149,26 @@ const Index = () => {
           )}
 
           {view === "history" && (
-            <motion.div
-              key="history"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="flex-1"
-            >
+            <motion.div key="history" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex-1">
               <History onBack={() => setView("home")} />
+            </motion.div>
+          )}
+
+          {view === "learning" && (
+            <motion.div key="learning" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex-1">
+              <LearningSummary onBack={() => setView("home")} />
+            </motion.div>
+          )}
+
+          {view === "avatar" && (
+            <motion.div key="avatar" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex-1">
+              <PersonalAvatar onBack={() => setView("home")} />
+            </motion.div>
+          )}
+
+          {view === "journal" && (
+            <motion.div key="journal" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex-1">
+              <Journal onBack={() => setView("home")} />
             </motion.div>
           )}
         </AnimatePresence>
